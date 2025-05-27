@@ -53,60 +53,77 @@ const FeaturedJobs = () => {
   ];
 
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Featured Jobs</h2>
-          <p className="text-lg text-gray-600">Hand-picked opportunities from top companies</p>
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Featured Jobs</h2>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">Hand-picked opportunities from top companies</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {jobs.map((job) => (
-            <Card key={job.id} className="hover:shadow-lg transition-shadow">
+            <Card key={job.id} className="hover:shadow-2xl transition-all duration-300 border-0 bg-white/80 backdrop-blur-sm group overflow-hidden">
               <CardHeader className="pb-4">
                 <div className="flex items-start justify-between">
-                  <div className="flex items-center space-x-3">
-                    <img 
-                      src={job.logo} 
-                      alt={job.company}
-                      className="w-12 h-12 rounded-lg object-cover"
-                    />
+                  <div className="flex items-center space-x-4">
+                    <div className="relative">
+                      <img 
+                        src={job.logo} 
+                        alt={job.company}
+                        className="w-16 h-16 rounded-2xl object-cover shadow-lg"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-br from-transparent to-black/10 rounded-2xl"></div>
+                    </div>
                     <div>
-                      <CardTitle className="text-lg">{job.title}</CardTitle>
-                      <p className="text-gray-600">{job.company}</p>
+                      <CardTitle className="text-xl font-bold text-gray-900 group-hover:text-indigo-600 transition-colors">{job.title}</CardTitle>
+                      <p className="text-gray-600 font-medium mt-1">{job.company}</p>
                     </div>
                   </div>
                   {job.featured && (
-                    <Badge className="bg-yellow-100 text-yellow-800">Featured</Badge>
+                    <Badge className="bg-gradient-to-r from-yellow-400 to-orange-400 text-white border-0 font-semibold">
+                      Featured
+                    </Badge>
                   )}
                 </div>
               </CardHeader>
               <CardContent>
-                <div className="space-y-3">
+                <div className="space-y-4">
                   <div className="flex items-center text-gray-600">
-                    <MapPin className="h-4 w-4 mr-2" />
-                    <span>{job.location}</span>
+                    <div className="p-2 bg-blue-100 rounded-lg mr-3">
+                      <MapPin className="h-4 w-4 text-blue-600" />
+                    </div>
+                    <span className="font-medium">{job.location}</span>
                   </div>
                   <div className="flex items-center text-gray-600">
-                    <DollarSign className="h-4 w-4 mr-2" />
-                    <span>{job.salary}</span>
+                    <div className="p-2 bg-green-100 rounded-lg mr-3">
+                      <DollarSign className="h-4 w-4 text-green-600" />
+                    </div>
+                    <span className="font-medium">{job.salary}</span>
                   </div>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center text-gray-600">
-                      <Clock className="h-4 w-4 mr-2" />
-                      <span>{job.posted}</span>
+                      <div className="p-2 bg-purple-100 rounded-lg mr-3">
+                        <Clock className="h-4 w-4 text-purple-600" />
+                      </div>
+                      <span className="font-medium">{job.posted}</span>
                     </div>
-                    <Badge variant="outline">{job.type}</Badge>
+                    <Badge variant="outline" className="border-indigo-200 text-indigo-600 font-medium">
+                      {job.type}
+                    </Badge>
                   </div>
-                  <Button className="w-full mt-4">Apply Now</Button>
+                  <Button className="w-full mt-6 h-12 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 font-semibold text-lg rounded-xl">
+                    Apply Now
+                  </Button>
                 </div>
               </CardContent>
             </Card>
           ))}
         </div>
 
-        <div className="text-center mt-12">
-          <Button variant="outline" size="lg">View All Jobs</Button>
+        <div className="text-center mt-16">
+          <Button variant="outline" size="lg" className="h-14 px-8 text-lg font-semibold border-2 border-indigo-200 text-indigo-600 hover:bg-indigo-600 hover:text-white rounded-xl">
+            View All Jobs
+          </Button>
         </div>
       </div>
     </section>
